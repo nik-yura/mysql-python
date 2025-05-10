@@ -1,0 +1,1 @@
+# simplify-working-with-mysql-in-python-create-a-class-for-database-management
