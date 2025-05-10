@@ -5,6 +5,7 @@ import mysql.connector
 from mysql.connector import errorcode
 
 class dbMySQL():
+    
 	def __init__(self, server, user, passwd, dbname):
 		try:
 			self.__cnx = mysql.connector.connect(user=user, password=passwd, host=server, database=dbname)
@@ -16,8 +17,8 @@ class dbMySQL():
 				print("Database does not exist")
 			else:
 				print(err)
-	
-	
+
+
 	def __strReplace(self, keyMass=[], dataMass=[], result = ''):
 		if isinstance(keyMass, str):
 			keyMass = [keyMass]
@@ -34,8 +35,8 @@ class dbMySQL():
 			result = result.replace(keyMass[i], str(dataMass[i]))
 		
 		return result
-	
-	
+
+
 	def create_table(self, nameTable, structure, encoding):
 		try:
 			sql = 'CREATE TABLE '+nameTable+' ('+structure+') ENGINE='+encoding
@@ -46,8 +47,8 @@ class dbMySQL():
 			result = 'Error: create_table ('+str(e)+')'
 		
 		return result
-	
-	
+
+
 	def insert(self, variable, nameTable, rows = None, values = None):
 		try:
 			sql = 'INSERT INTO '+nameTable
@@ -71,8 +72,8 @@ class dbMySQL():
 			result = 'Error: insert ('+str(e)+')'
 		
 		return result
-	
-	
+
+
 	def select(self, variable, what, nameTable, where = None, order = None):
 		try:
 			sql = 'SELECT '+what+' FROM '+nameTable
@@ -95,8 +96,8 @@ class dbMySQL():
 			result = 'Error: select ('+str(e)+')'
 		
 		return result
-	
-	
+
+
 	def update(self, variable, nameTable, params, where = None):
 		try:
 			sql = 'UPDATE '+nameTable+' SET '+params
@@ -119,8 +120,8 @@ class dbMySQL():
 			result = 'Error: update ('+str(e)+')'
 		
 		return result
-	
-	
+
+
 	def delete(self, variable, nameTable, where):
 		try:
 			sql = 'DELETE FROM '+nameTable+' WHERE '+where
@@ -142,8 +143,8 @@ class dbMySQL():
 			result = 'Error: delete ('+str(e)+')'
 		
 		return result
-	
-	
+
+
 	def disconnect(self):
 		try:
 			self.__cnx.close()
@@ -152,8 +153,8 @@ class dbMySQL():
 			result = 'Error: disconnect ('+str(e)+')'
 		
 		return result
-	
-	
+
+
 	def __del__(self):
 		try:
 			self.__cnx.close()
