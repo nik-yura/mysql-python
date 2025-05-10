@@ -5,7 +5,6 @@ import mysql.connector
 from mysql.connector import errorcode
 
 class dbMySQL():
-    
 	def __init__(self, server, user, passwd, dbname):
 		try:
 			self.__cnx = mysql.connector.connect(user=user, password=passwd, host=server, database=dbname)
